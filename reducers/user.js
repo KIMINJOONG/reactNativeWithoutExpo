@@ -56,6 +56,12 @@ export const initialState = {
       type: LOG_OUT_REQUEST
     }
   }
+
+  export const loadUser = () => {
+    return {
+      type: LOAD_USER_REQUEST
+    }
+  }
   
   const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -110,6 +116,22 @@ export const initialState = {
         }
       }
       case LOG_OUT_FAILURE: {
+        return {
+          ...state
+        }
+      }
+      case LOAD_USER_REQUEST: {
+        return {
+          ...state
+        }
+      }
+      case LOAD_USER_SUCCESS: {
+        return {
+          ...state,
+          me: action.data
+        }
+      }
+      case LOAD_USER_FAILURE: {
         return {
           ...state
         }

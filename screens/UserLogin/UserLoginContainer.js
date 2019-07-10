@@ -4,8 +4,8 @@ import { AsyncStorage } from 'react-native';
 
 class UserLoginContainer extends Component {
     async componentDidMount(){
-        const token = await AsyncStorage.getItem('token');
-        if(token) {
+        this.props.loadUser();
+        if(this.props.me) {
             alert('이미 로그인 된 사용자입니다.');
             this.props.navigation.navigate('UserDetail');
         }
