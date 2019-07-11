@@ -1,7 +1,7 @@
 import {createStackNavigator, createAppContainer } from "react-navigation";
-import TestScreen from '../screens/test';
 import UserLoginScreen from '../screens/UserLogin';
 import TabNavigation from "./TabNavigation";
+import UserJoinScreen from "../screens/UserJoin";
 
 const MainNavigation = createStackNavigator(
     {
@@ -13,6 +13,12 @@ const MainNavigation = createStackNavigator(
         },
         Tabs:{
             screen: TabNavigation, navigationOptions: {header: null},
+        },
+        UserJoin: {
+            screen: UserJoinScreen,
+            navigationOptions: {
+                title: '회원가입'
+            }
         },
     }
     

@@ -1,7 +1,7 @@
 import { call, put, all, fork, takeLatest, takeEvery } from "redux-saga/effects";
 import { SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_IN_SUCCESS, LOG_IN_FAILURE, LOG_IN_REQUEST, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOG_OUT_FAILURE, LOAD_USER_SUCCESS, LOAD_USER_FAILURE, LOAD_USER_REQUEST } from "../reducers/user";
 import axios from 'axios';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage'; 
 function signUpAPI(signUpData){
   return axios.post("/user/", signUpData);
 }
@@ -81,7 +81,7 @@ function* loadUser() {
     const result = yield call(loadUserAPI);
     yield put({
       type: LOAD_USER_SUCCESS,
-      data: result.data.user
+      data: result.data
     });
   }catch(e){
     console.error(e);

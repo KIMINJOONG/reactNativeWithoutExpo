@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import UserLoginPresenter from './UserLoginPresenter';
-import { AsyncStorage } from 'react-native';
 
 class UserLoginContainer extends Component {
-    async componentDidMount(){
+    componentDidMount(){
         this.props.loadUser();
-        if(this.props.me) {
+        const me = this.props.me;
+        console.log(me);
+        if(me) {
             alert('이미 로그인 된 사용자입니다.');
             this.props.navigation.navigate('UserDetail');
         }
     }
+
     _pushLogin(navigation){
         navigation.navigate({
             routeName: 'UserJoin',

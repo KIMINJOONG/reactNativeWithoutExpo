@@ -1,15 +1,15 @@
-import UserDetailContainer from "./UserDetailContainer";
+import UserJoinContainer from "./UserJoinContainer";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { logoutAction, loadUser } from "../../reducers/user";
+import { signUp } from "../../reducers/user";
 
 const mapStateToProps = state => ({
-  me : state.user.me,
+  isSignedUp: state.user.isSignedUp
 });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ logoutAction, loadUser }, dispatch);
+  bindActionCreators({ signUp }, dispatch);
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserDetailContainer);
+)(UserJoinContainer);

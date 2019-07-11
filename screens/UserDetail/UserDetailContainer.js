@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import UserDetailPresenter from './UserDetailPresenter';
-import { AsyncStorage } from 'react-native';
 
 class UserDetailContainer extends Component {
-    async componentDidMount(){
-        const token = await AsyncStorage.getItem('token');
-        if(!token){
-            //this.props.navigation.navigate('UserLogin');
+    componentDidMount(){
+        this.props.loadUser();
+        const me = this.props.me;
+        console.log(me);
+        if(!me) {
+            alert('로그인이 필요합니다.');
+            this.props.navigation.navigate('UserLogin');
         }
     }
     handleLogout = () => {

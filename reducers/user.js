@@ -5,7 +5,7 @@ export const initialState = {
     isSignedUp: false, // 회원가입 성공
     isSigningUp: false, // 회원가입 시도중
     signUpErrorReason: "", // 회원가입 실패 사유
-    me: null,
+    me: {},
     userInfo: null, //남의 정보
     isEditingNickname: false,
     editNicknameErrorReason: ''
