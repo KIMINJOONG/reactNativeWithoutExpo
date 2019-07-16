@@ -9,7 +9,6 @@ class StoreMapContainer extends Component {
         error: ''
     }
     componentDidMount(){
-        Geolocation.getCurrentPosition(info => console.log(info));
         Geolocation.getCurrentPosition(position => {
             this.setState({
                 lat: position.coords.latitude,

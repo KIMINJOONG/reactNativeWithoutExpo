@@ -5,7 +5,6 @@ class UserLoginContainer extends Component {
     componentDidMount(){
         this.props.loadUser();
         const me = this.props.me;
-        console.log(me);
         if(me) {
             alert('이미 로그인 된 사용자입니다.');
             this.props.navigation.navigate('UserDetail');

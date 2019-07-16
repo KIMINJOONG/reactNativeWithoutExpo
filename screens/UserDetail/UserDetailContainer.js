@@ -5,7 +5,6 @@ class UserDetailContainer extends Component {
     componentDidMount(){
         this.props.loadUser();
         const me = this.props.me;
-        console.log(me);
         if(!me) {
             alert('로그인이 필요합니다.');
             this.props.navigation.navigate('UserLogin');
