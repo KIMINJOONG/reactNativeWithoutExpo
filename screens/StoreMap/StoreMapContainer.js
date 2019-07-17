@@ -4,26 +4,28 @@ import Geolocation from '@react-native-community/geolocation';
 
 class StoreMapContainer extends Component {
     state = {
-        lat : 0,
-        lng: 0,
+        latLng: {},
         error: ''
     }
     componentDidMount(){
         Geolocation.getCurrentPosition(position => {
             this.setState({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            })
+                latLng: {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                }
+            });
         }, error => {
             console.log(error);
         });
     }
 
     render(){
+        const { latLng } = this.state;
+        console.log(latLng);
         return (
             <StoreMapPresenter
-                lat={this.state.lat}
-                lng={this.state.lng}
+                latlng={this.state.latLng}
             />
         );
     }

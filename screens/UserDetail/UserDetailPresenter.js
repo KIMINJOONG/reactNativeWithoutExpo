@@ -6,7 +6,7 @@ const Container = styled.View`
 `;
 const Text = styled.Text`
 `;
-const UserDetailPresenter = ({handleLogout, me, navigation}) => (
+const UserDetailPresenter = ({handleLogout, me}) => (
     <Container>
         <Text>
             {me && me.name}님 환영합니다.

@@ -4,5 +4,8 @@
 - android일 경우 npx jetify 꼭 해주기!
 - keystore가 없는 이슈 
     프로젝트 -> android -> app경로에서  
-    keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+    keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000(build)
+
+    keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000(debug)
+
 - debug keystore 변경했을시 build-> clean build, rebuild 필수!
