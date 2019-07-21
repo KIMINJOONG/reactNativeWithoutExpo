@@ -1,3 +1,5 @@
+import produce from 'immer';
+
 export const initialState = {
     isLoggingOut: false, // 로그아웃 시도중
     isLoggingIn: false, // 로그인 시도중
@@ -5,7 +7,7 @@ export const initialState = {
     isSignedUp: false, // 회원가입 성공
     isSigningUp: false, // 회원가입 시도중
     signUpErrorReason: "", // 회원가입 실패 사유
-    me: {},
+    me: null,
     userInfo: null, //남의 정보
     isEditingNickname: false,
     editNicknameErrorReason: ''
@@ -64,84 +66,57 @@ export const initialState = {
   }
   
   const reducer = (state = initialState, action) => {
-    switch (action.type) {
-      case SIGN_UP_REQUEST: {
-        return {
-          ...state,
-          isSignedUp: false,
-          isSigningUp: true
+    return produce(state, (draft) => {
+      switch (action.type) {
+        case SIGN_UP_REQUEST: {
+          draft.isSignedUp = false;
+          draft.isSigningUp = true;
+          break;
+        }
+        case SIGN_UP_SUCCESS: {
+          draft.isSignedUp = true;
+          draft.isSigningUp = false;
+          break;
+        }
+        case SIGN_UP_FAILURE: {
+          break;
+        }
+        case LOG_IN_REQUEST: {
+          break;
+        }
+        case LOG_IN_SUCCESS: {
+          draft.me = action.data;
+          break;
+        }
+        case LOG_IN_FAILURE: {
+          break;
+        }
+        case LOG_OUT_REQUEST: {
+          break;
+        }
+        case LOG_OUT_SUCCESS: {
+          break;
+        }
+        case LOG_OUT_FAILURE: {
+          break;
+        }
+        case LOAD_USER_REQUEST: {
+          break;
+        }
+        case LOAD_USER_SUCCESS: {
+          draft.me = action.data;
+          break;
+        }
+        case LOAD_USER_FAILURE: {
+          break;
+        }
+        default: {
+          return {
+            ...state
+          };
         }
       }
-      case SIGN_UP_SUCCESS: {
-        return {
-          ...state,
-          isSignedUp: true,
-          isSigningUp: false,
-        }
-      }
-      case SIGN_UP_FAILURE: {
-        return {
-          ...state,
-          isSignedUp: false,
-          isSigningUp: false,
-        }
-      }
-      case LOG_IN_REQUEST: {
-        return {
-          ...state,
-          isLoggingIn: false
-        }
-      }
-      case LOG_IN_SUCCESS: {
-        return {
-          ...state,
-          me: action.data,
-          isLoggingIn: true
-        }
-      }
-      case LOG_IN_FAILURE: {
-        return {
-          ...state,
-          isLoggingIn: false
-        }
-      }
-      case LOG_OUT_REQUEST: {
-        return {
-          ...state
-        }
-      }
-      case LOG_OUT_SUCCESS: {
-        return {
-          ...state
-        }
-      }
-      case LOG_OUT_FAILURE: {
-        return {
-          ...state
-        }
-      }
-      case LOAD_USER_REQUEST: {
-        return {
-          ...state
-        }
-      }
-      case LOAD_USER_SUCCESS: {
-        return {
-          ...state,
-          me: action.data
-        }
-      }
-      case LOAD_USER_FAILURE: {
-        return {
-          ...state
-        }
-      }
-      default: {
-        return {
-          ...state
-        };
-      }
-    }
+    });
   };
   
   export default reducer;
