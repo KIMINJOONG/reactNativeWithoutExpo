@@ -122,13 +122,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0BCB06A9A5B5476CB83F4873 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* drinker */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,7 +165,6 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				F5F2FAC77574AE55FAD29C69 /* Pods */,
-				0BCB06A9A5B5476CB83F4873 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
